@@ -24,7 +24,7 @@ src/%.o: ../src/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: MCU GCC Compiler'
 	@echo $(PWD)
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32 -DSTM32F4 -DSTM32F407VGTx -DSTM32F4DISCOVERY -DDEBUG -DSTM32F40XX -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -I"C:/Users/Staszek/workspace/TrueOrFalseGame/Utilities" -I"C:/Users/Staszek/workspace/TrueOrFalseGame/StdPeriph_Driver/inc" -I"C:/Users/Staszek/workspace/TrueOrFalseGame/inc" -I"C:/Users/Staszek/workspace/TrueOrFalseGame/CMSIS/device" -I"C:/Users/Staszek/workspace/TrueOrFalseGame/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32 -DSTM32F4 -DSTM32F407VGTx -DSTM32F4DISCOVERY -DDEBUG -DSTM32F40XX -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -I"C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/Utilities" -I"C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc" -I"C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc" -I"C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/CMSIS/device" -I"C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

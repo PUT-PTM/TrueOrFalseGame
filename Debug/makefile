@@ -32,10 +32,10 @@ endif
 all: TrueOrFalseGame.elf
 
 # Tool invocations
-TrueOrFalseGame.elf: $(OBJS) $(USER_OBJS) C:\Users\Staszek\workspace\TrueOrFalseGame\LinkerScript.ld
+TrueOrFalseGame.elf: $(OBJS) $(USER_OBJS) C:\Users\Staszek\Documents\GitHub\TrueOrFalseGame\LinkerScript.ld
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"C:\Users\Staszek\workspace\TrueOrFalseGame\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "TrueOrFalseGame.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"C:\Users\Staszek\Documents\GitHub\TrueOrFalseGame\LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "TrueOrFalseGame.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
