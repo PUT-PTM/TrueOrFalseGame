@@ -13,6 +13,7 @@
 #include "stm32f4_discovery.h"
 #include "diskio.h"
 #include "tm_stm32f4_fatfs.h"
+#include "tm_stm32f4_disco.h"
 #include "tm_stm32f4_delay.h"
 
 int main(void)
