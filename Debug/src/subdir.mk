@@ -4,17 +4,35 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/delay.c \
+../src/ff.c \
+../src/fpu.c \
 ../src/main.c \
+../src/sdmodule.c \
+../src/sensor.c \
+../src/spi_sd.c \
 ../src/syscalls.c \
 ../src/system_stm32f4xx.c 
 
 OBJS += \
+./src/delay.o \
+./src/ff.o \
+./src/fpu.o \
 ./src/main.o \
+./src/sdmodule.o \
+./src/sensor.o \
+./src/spi_sd.o \
 ./src/syscalls.o \
 ./src/system_stm32f4xx.o 
 
 C_DEPS += \
+./src/delay.d \
+./src/ff.d \
+./src/fpu.d \
 ./src/main.d \
+./src/sdmodule.d \
+./src/sensor.d \
+./src/spi_sd.d \
 ./src/syscalls.d \
 ./src/system_stm32f4xx.d 
 

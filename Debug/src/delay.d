@@ -1,4 +1,5 @@
-src/main.o: ../src/main.c \
+src/delay.o: ../src/delay.c \
+ C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/delay.h \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/CMSIS/device/stm32f4xx.h \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/CMSIS/core/core_cm4.h \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/CMSIS/core/core_cmInstr.h \
@@ -31,14 +32,9 @@ src/main.o: ../src/main.c \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_tim.h \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_usart.h \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_wwdg.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/misc.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/sdmodule.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/delay.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/fpu.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/spi_sd.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/ff.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/integer.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/ffconf.h
+ C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/misc.h
+
+C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/delay.h:
 
 C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/CMSIS/device/stm32f4xx.h:
 
@@ -105,17 +101,3 @@ C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx
 C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_wwdg.h:
 
 C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/misc.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/sdmodule.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/delay.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/fpu.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/spi_sd.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/ff.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/integer.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/ffconf.h:
