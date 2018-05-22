@@ -1,4 +1,5 @@
-src/main.o: ../src/main.c \
+src/tm_stm32f4_delay.o: ../src/tm_stm32f4_delay.c \
+ ../src/tm_stm32f4_delay.h \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/CMSIS/device/stm32f4xx.h \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/CMSIS/core/core_cm4.h \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/CMSIS/core/core_cmInstr.h \
@@ -32,18 +33,10 @@ src/main.o: ../src/main.c \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_usart.h \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_wwdg.h \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/misc.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/sdmodule.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/delay.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/fpu.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/spi_sd.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/ff.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/integer.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/ffconf.h \
- ../src/tm_stm32f4_hd44780.h \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_rcc.h \
- C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_gpio.h \
- ../src/defines.h ../src/tm_stm32f4_delay.h ../src/attributes.h \
- ../src/tm_stm32f4_gpio.h
+ ../src/defines.h ../src/attributes.h
+
+../src/tm_stm32f4_delay.h:
 
 C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/CMSIS/device/stm32f4xx.h:
 
@@ -111,30 +104,8 @@ C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx
 
 C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/misc.h:
 
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/sdmodule.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/delay.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/fpu.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/spi_sd.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/ff.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/integer.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/inc/ffconf.h:
-
-../src/tm_stm32f4_hd44780.h:
-
 C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_rcc.h:
-
-C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_gpio.h:
 
 ../src/defines.h:
 
-../src/tm_stm32f4_delay.h:
-
 ../src/attributes.h:
-
-../src/tm_stm32f4_gpio.h:

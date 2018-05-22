@@ -14,84 +14,61 @@
 #include <stdio.h>
 #include <string.h>
 #include "sdmodule.h"
+#include "tm_stm32f4_hd44780.h"
+
 
 int main(void)
 {
-	SDmodule_Configuration();
-	char* filename = "TEST.txt";
-	char* buffer= "123456789";
-	UINT loadedBytes;
-	char dane[3000];
-	SDmodule_ReadFile(filename, &dane, &loadedBytes);
-	SDmodule_WriteFile("NOWY.TXT", &dane);
+RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 
-    /**
-    * IMPORTANT NOTE!
-    * The symbol VECT_TAB_SRAM needs to be defined when building the project
-    * if code has been located to RAM and interrupts are used.
-    * Otherwise the interrupt table located in flash will be used.
-    * See also the <system_*.c> file and how the SystemInit() function updates
-    * SCB->VTOR register.
-    * E.g. SCB->VTOR = 0x20000000;
-    */
+// tworzenie strutkury
+GPIO_InitTypeDef  GPIO_InitStructure;
 
-    // Structures to hold the initialisation data
-    GPIO_InitTypeDef GPIO_InitStruct;
-    USART_InitTypeDef USART_InitStruct;
+// wypelnianie struktury nanymi
+GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13| GPIO_Pin_14| GPIO_Pin_15;
+GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+GPIO_Init(GPIOD, &GPIO_InitStructure);
 
-    // enable the peripherals we're going to use
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
-    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-    // Usart1 Tx is on GPIOB pin 6 as an alternative function
-    GPIO_InitStruct.GPIO_Pin = GPIO_Pin_6;
-    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF;
-    GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
-    GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_UP;
-    GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-    // Connect pin 6 to the USART
-    GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_USART1);
 
-    // init the USART to 8:N:1 at 9600 baud as specified in the
-    // SerLCD data sheet
-    USART_InitStruct.USART_BaudRate = 9600;
-    USART_InitStruct.USART_WordLength = USART_WordLength_8b;
-    USART_InitStruct.USART_StopBits = USART_StopBits_1;
-    USART_InitStruct.USART_Parity = USART_Parity_No;
-    USART_InitStruct.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-    USART_InitStruct.USART_Mode = USART_Mode_Tx;
-    USART_Init(USART1, &USART_InitStruct);
+SDmodule_Configuration();
 
-    // Enable USART1 peripheral
-    USART_Cmd(USART1, ENABLE);
+char* filename = "TEST.txt";
+UINT loadedBytes;
+char dane[48];
+SDmodule_ReadFile(filename, &dane, &loadedBytes);
 
-    // Clear the screen using the commands specified in the SerLCD data sheet.
-    // The while loops test the 'Transmission Complete' flag in the USART
-    // status register to make sure the previous character has gone before
-    // sending the next one.
-    while( !(USART1->SR & USART_SR_TC) );
-    USART_SendData(USART1, 0xfe);
 
-    while( !(USART1->SR & USART_SR_TC) );
-    USART_SendData(USART1, 0x01);
 
-    // something to display
-    char* messageText = "Testing 1 2 3";
+TM_HD44780_Init(24,4);
+TM_HD44780_Clear();
+TM_HD44780_Puts(0, 0, &dane);
 
-    // index into the display string
-    int i = 0;
 
-    // display the message
-    while (i < strlen(messageText))
-    {
-        while( !(USART1->SR & USART_SR_TC) )
-        USART_SendData(USART1, messageText[i]);
-        i++;
-    }
+for(;;)
+{
+	if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0)==1)
+	{GPIO_SetBits(GPIOD,GPIO_Pin_12);
+	TM_HD44780_Clear();
+	TM_HD44780_Puts(0, 0, "WITAJ");
 
-    // Infinite loop
-    while (1){}
+	}
+
+
+}
+
+
 
 }

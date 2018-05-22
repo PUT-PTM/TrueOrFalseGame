@@ -12,7 +12,10 @@ C_SRCS += \
 ../src/sensor.c \
 ../src/spi_sd.c \
 ../src/syscalls.c \
-../src/system_stm32f4xx.c 
+../src/system_stm32f4xx.c \
+../src/tm_stm32f4_delay.c \
+../src/tm_stm32f4_gpio.c \
+../src/tm_stm32f4_hd44780.c 
 
 OBJS += \
 ./src/delay.o \
@@ -23,7 +26,10 @@ OBJS += \
 ./src/sensor.o \
 ./src/spi_sd.o \
 ./src/syscalls.o \
-./src/system_stm32f4xx.o 
+./src/system_stm32f4xx.o \
+./src/tm_stm32f4_delay.o \
+./src/tm_stm32f4_gpio.o \
+./src/tm_stm32f4_hd44780.o 
 
 C_DEPS += \
 ./src/delay.d \
@@ -34,7 +40,10 @@ C_DEPS += \
 ./src/sensor.d \
 ./src/spi_sd.d \
 ./src/syscalls.d \
-./src/system_stm32f4xx.d 
+./src/system_stm32f4xx.d \
+./src/tm_stm32f4_delay.d \
+./src/tm_stm32f4_gpio.d \
+./src/tm_stm32f4_hd44780.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
