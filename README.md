@@ -8,31 +8,31 @@ Break your own record or compete against other players in TrueOrFalseGame!
 
 ## How to run
 
-PINS:
+**PINS:**
 
-SD:
-PB13 -> SCK
-PB14 -> MISO
-PB15 -> MOSI
-PB11 -> CHIP SELECT
+**SD:**<br />
+PB13 -> SCK <br />
+PB14 -> MISO <br />
+PB15 -> MOSI <br />
+PB11 -> CHIP SELECT <br />
 
-LCD:
-GND	-> GND			
-VCC	-> +5V				
-V0	-> GND
-RS	-> PB2				
-RW	-> GND				
-E	-> PB7				
-D0		-			
-D1		-				
-D2		-				
-D3		-				
-D4	-> PC12			
-D5	-> PC13			
-D6 -> PB12			
-D7 -> PB13			
-A	-> +5V		
-K	-> GND				
+**LCD:** <br />
+GND	-> GND <br />	
+VCC	-> +5V <br />				 
+V0	-> GND <br />
+RS	-> PB2 <br />				
+RW	-> GND	<br />			
+E	-> PB7	<br />			
+D0		-		<br />	
+D1		-			<br />	
+D2		-			<br />	
+D3		-			<br />	
+D4	-> PC12		<br />	
+D5	-> PC13		<br />	
+D6 -> PB12		<br />	
+D7 -> PB13		<br />	
+A	-> +5V		<br />
+K	-> GND		<br />		
 
 ## How to compile
 
