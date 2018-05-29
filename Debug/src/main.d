@@ -43,7 +43,8 @@ src/main.o: ../src/main.c \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_rcc.h \
  C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_gpio.h \
  ../src/defines.h ../src/tm_stm32f4_delay.h ../src/attributes.h \
- ../src/tm_stm32f4_gpio.h
+ ../src/tm_stm32f4_gpio.h \
+ C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_tim.h
 
 C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/CMSIS/device/stm32f4xx.h:
 
@@ -138,3 +139,5 @@ C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx
 ../src/attributes.h:
 
 ../src/tm_stm32f4_gpio.h:
+
+C:/Users/Staszek/Documents/GitHub/TrueOrFalseGame/StdPeriph_Driver/inc/stm32f4xx_tim.h:
