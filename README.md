@@ -34,7 +34,7 @@ D7 -> PB13		<br />
 A	-> +5V		<br />
 K	-> GND		<br />		
 
-**Przyciski:** <br />
+**Buttons:** <br />
 K7 -> PA1 <br />
 K3 -> PA2 <br />
 G -> GND <br />
