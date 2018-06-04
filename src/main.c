@@ -89,25 +89,34 @@ char FALSE[25][48]={
 
 int Question_Control_TRUE()
 {
-		int old_question=0;
+		int old_question=1;
 		int random_number=0;
+		int repeat = 0;
 
 		if(counter_of_already_TRUE!=0)
+			{
+				while(old_question==1)
 				{
-		do{
 
-			random_number=rand()%NUMBEROFQUESTIONS+1;
+				random_number=rand()%NUMBEROFQUESTIONS+1;
 
-			for(int i=0;i<counter_of_already_TRUE;i++)
-		{
-			if(already_TRUE[i]==random_number)
-			{old_question=1; }
-		}
-		}
-		while(old_question!=1);
-				}
+				for(int i=0;i<counter_of_already_TRUE;i++)
+			{
+				if(already_TRUE[i]==random_number)
+				{repeat=1;}
+
+			}
+				if(repeat==1)
+				{old_question=1; repeat=0;}
+				if(repeat==0)
+				{old_question=0;}
+			}
+
+					}
+
 		if(counter_of_already_TRUE==0)
 		{random_number=rand()%NUMBEROFQUESTIONS+1;}
+
 		already_TRUE[counter_of_already_TRUE]=random_number;
 		return random_number;
 		counter_of_already_TRUE++;
@@ -117,21 +126,28 @@ int Question_Control_FALSE()
 {
 	int old_question=0;
 	int random_number=0;
+	int repeat = 0;
 
-	if(counter_of_already_FALSE>0)
-			{
-	do{
+	if(counter_of_already_FALSE!=0)
+				{
+					while(old_question==1)
+					{
 
-		random_number=rand()%NUMBEROFQUESTIONS+1;
+					random_number=rand()%NUMBEROFQUESTIONS+1;
 
-		for(int i=0;i<counter_of_already_FALSE;i++)
-	{
-		if(already_FALSE[i]==random_number)
-		{old_question=1; }
-	}
-	}
-	while(old_question!=1);
-			}
+					for(int i=0;i<counter_of_already_FALSE;i++)
+				{
+					if(already_FALSE[i]==random_number)
+					{repeat=1;}
+
+				}
+					if(repeat==1)
+					{old_question=1; repeat=0;}
+					if(repeat==0)
+					{old_question=0;}
+				}
+
+						}
 
 	if(counter_of_already_FALSE==0)
 	{random_number=rand()%NUMBEROFQUESTIONS+1;}
@@ -145,14 +161,41 @@ void Get_Question()
 {
 
 
-	true_or_false=rand()%2;
+
+
+	if(counter_of_already_TRUE==NUMBEROFQUESTIONS)
+	{
+		question_to_display = Question_Control_FALSE();
+			TM_HD44780_Init(24,4);
+			TM_HD44780_Clear();
+			TM_HD44780_Puts(0, 0, FALSE[question_to_display]);
+	}
+
+	if(counter_of_already_FALSE==NUMBEROFQUESTIONS)
+	{
+		question_to_display = Question_Control_TRUE();
+			TM_HD44780_Init(24,4);
+			TM_HD44780_Clear();
+			TM_HD44780_Puts(0, 0, TRUE[question_to_display]);
+	}
+
+	if(counter_of_already_FALSE==NUMBEROFQUESTIONS&&counter_of_already_TRUE==NUMBEROFQUESTIONS)
+	{
+		TM_HD44780_Init(24,4);
+					TM_HD44780_Clear();
+					TM_HD44780_Puts(0, 0, "KONIEC PYTAN. WYGRALES/AS!!!");
+	}
+	else {
+
+		true_or_false=rand()%2;
 
 	if(true_or_false==0)
 	{
 	question_to_display = Question_Control_FALSE();
 	TM_HD44780_Init(24,4);
 	TM_HD44780_Clear();
-	TM_HD44780_Puts(0, 0, FALSE[question_to_display]);}
+	TM_HD44780_Puts(0, 0, FALSE[question_to_display]);
+	}
 
 	if(true_or_false==1)
 	{
@@ -160,7 +203,7 @@ void Get_Question()
 	TM_HD44780_Init(24,4);
 	TM_HD44780_Clear();
 	TM_HD44780_Puts(0, 0, TRUE[question_to_display]);}
-
+	}
 }
 
 
@@ -290,6 +333,7 @@ do{
 
 
 }while(1);
+
 /*	int true_or_false=rand()%2;
 	int random;
 	random=rand()%NUMBEROFQUESTIONS+1;
