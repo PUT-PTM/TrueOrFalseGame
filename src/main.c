@@ -24,16 +24,14 @@
 int NUMBEROFQUESTIONS = 25;
 int already[50];
 char dane[48];
-char dane2[48];
 
 int true_or_false=0;
 int up=0;
 
 
 UINT loadedBytes;
-UINT loadedBytes2;
+
 char* filename;
-char* filename2;
 int counter_of_already=0;
 
 void init_counter ()
@@ -135,13 +133,13 @@ Przyciski.GPIO_PuPd = GPIO_PuPd_UP;
 GPIO_Init(GPIOA, &Przyciski);
 
 TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
-	/* Time base configuration */
-	TIM_TimeBaseStructure.TIM_Period = 101 - 1;
-		TIM_TimeBaseStructure.TIM_Prescaler = 420 - 1;
-	TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
-	TIM_TimeBaseStructure.TIM_CounterMode =  TIM_CounterMode_Up ;
-	TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+/* Time base configuration */
+TIM_TimeBaseStructure.TIM_Period = 101 - 1;
+TIM_TimeBaseStructure.TIM_Prescaler = 420 - 1;
+TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+TIM_TimeBaseStructure.TIM_CounterMode =  TIM_CounterMode_Up ;
+TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure);
+RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
 
 
 TIM_TimeBaseStructure.TIM_Prescaler = 42000;
@@ -162,7 +160,7 @@ GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 GPIO_Init(GPIOE, &GPIO_InitStructure);
 
 
-
+srand(0);
 SDmodule_Configuration();
 init_counter();
 char fn[14];
@@ -178,11 +176,11 @@ do{
 if(pos==0) {
 
 	sprintf(fn, "FALSE\\%d.txt", random);
-						filename2 = fn;
-						SDmodule_ReadFile(filename2, &dane2, &loadedBytes2);
+						filename = fn;
+						SDmodule_ReadFile(filename, &dane, &loadedBytes);
 						TM_HD44780_Init(24,4);
 						TM_HD44780_Clear();
-						TM_HD44780_Puts(0, 0, dane2);
+						TM_HD44780_Puts(0, 0, "TEST");
 
 
 }
@@ -193,7 +191,7 @@ if(pos==1){
 					SDmodule_ReadFile(filename, &dane, &loadedBytes);
 					TM_HD44780_Init(24,4);
 					TM_HD44780_Clear();
-					TM_HD44780_Puts(0, 0, "TEST");
+					TM_HD44780_Puts(0, 0, dane);
 
 }
 pos++;

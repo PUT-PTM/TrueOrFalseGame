@@ -21,6 +21,7 @@ static FATFS fatfs;
 static FIL file;
 static FRESULT fresult;
 
+
 void SDmodule_Configuration(void) {
 	/* Functions from external library for enabling SD module */
 	SystemInit();
@@ -47,6 +48,7 @@ uint8_t SDmodule_ReadFile(char* file_name, char * buffer, UINT * loaded_bytes) {
 	}
 	return fresult;
 }
+
 
 uint8_t SDmodule_WriteFile(char * file_name, char * file_content) {
 	unsigned int storedbytes;
