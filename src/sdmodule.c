@@ -28,6 +28,7 @@ void SDmodule_Configuration(void) {
 	fpu_enable();
 	delay_init(168);
 	SPI_SD_Init();
+
 }
 
 uint8_t SDmodule_ReadFile(char* file_name, char * buffer, UINT * loaded_bytes) {
@@ -37,7 +38,7 @@ uint8_t SDmodule_ReadFile(char* file_name, char * buffer, UINT * loaded_bytes) {
 	fresult = f_mount(0, &fatfs);
 
 	if (fresult == FR_OK) {
-		fresult = f_open(&file, file_name, FA_OPEN_ALWAYS | FA_READ);
+	fresult = f_open(&file, file_name, FA_OPEN_ALWAYS | FA_READ);
 
 		if (fresult == FR_OK) {
 			file_size = f_size(&file);
