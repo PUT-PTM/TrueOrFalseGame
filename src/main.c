@@ -26,7 +26,10 @@ int question_to_display;
 int NUMBEROFQUESTIONS = 25;
 int already_TRUE[25];
 int already_FALSE[25];
+int order_TRUE[25];
+int order_FALSE[25];
 int true_or_false=0;
+int end=0;
 
 int counter_of_already_TRUE=0;
 int counter_of_already_FALSE=0;
@@ -87,83 +90,59 @@ char FALSE[25][48]={
 "Dniepr to miasto w Rosji.",
 };
 
-int Question_Control_TRUE()
+void generate_order()
 {
-		int old_question=1;
-		int random_number=0;
-		int repeat = 0;
+	for (int i = 0; i < NUMBEROFQUESTIONS; i++)
+		{     // fill array
+			order_TRUE[i] = i;
+			order_FALSE[i] = i;
+		}
 
-		if(counter_of_already_TRUE!=0)
-			{
-				while(old_question==1)
-				{
+/*	for (int i = 0; i < NUMBEROFQUESTIONS; i++)
+		{    // shuffle array
 
-				random_number=rand()%NUMBEROFQUESTIONS+1;
+		int temp_FALSE = order_FALSE[i];
+		int temp_TRUE = order_TRUE[i];
 
-				for(int i=0;i<counter_of_already_TRUE;i++)
-			{
-				if(already_TRUE[i]==random_number)
-				{repeat=1;}
+		int randomIndex = rand() % NUMBEROFQUESTIONS;
 
-			}
-				if(repeat==1)
-				{old_question=1; repeat=0;}
-				if(repeat==0)
-				{old_question=0;}
-			}
+		order_TRUE[i] = order_TRUE[randomIndex];
+		order_TRUE[randomIndex] = temp_TRUE;
 
-					}
+		order_FALSE[i] = FALSE[randomIndex];
+		order_FALSE[randomIndex] = temp_FALSE;
 
-		if(counter_of_already_TRUE==0)
-		{random_number=rand()%NUMBEROFQUESTIONS+1;}
+		}
+*/
 
-		already_TRUE[counter_of_already_TRUE]=random_number;
-		return random_number;
-		counter_of_already_TRUE++;
+		}
+
+
+int Question_Control_TRUE()
+{		counter_of_already_TRUE++;
+		return order_TRUE[counter_of_already_TRUE-1];
+
 }
 
 int Question_Control_FALSE()
-{
-	int old_question=0;
-	int random_number=0;
-	int repeat = 0;
+{	counter_of_already_FALSE++;
+	return order_FALSE[counter_of_already_FALSE-1];
 
-	if(counter_of_already_FALSE!=0)
-				{
-					while(old_question==1)
-					{
-
-					random_number=rand()%NUMBEROFQUESTIONS+1;
-
-					for(int i=0;i<counter_of_already_FALSE;i++)
-				{
-					if(already_FALSE[i]==random_number)
-					{repeat=1;}
-
-				}
-					if(repeat==1)
-					{old_question=1; repeat=0;}
-					if(repeat==0)
-					{old_question=0;}
-				}
-
-						}
-
-	if(counter_of_already_FALSE==0)
-	{random_number=rand()%NUMBEROFQUESTIONS+1;}
-
-	already_FALSE[counter_of_already_FALSE]=random_number;
-	counter_of_already_FALSE++;
-	return random_number;
 }
 
 void Get_Question()
 {
 
+	if(counter_of_already_FALSE==NUMBEROFQUESTIONS&&counter_of_already_TRUE==NUMBEROFQUESTIONS)
+		{
+			TM_HD44780_Init(24,4);
+						TM_HD44780_Clear();
+						TM_HD44780_Puts(0, 0, "KONIEC PYTAN. WYGRALES/AS!!!");
+						end=1;
+		}
 
-
-
-	if(counter_of_already_TRUE==NUMBEROFQUESTIONS)
+if(end!=1){
+	if(counter_of_already_TRUE>=NUMBEROFQUESTIONS)
 	{
 		question_to_display = Question_Control_FALSE();
 			TM_HD44780_Init(24,4);
@@ -171,7 +150,7 @@ void Get_Question()
 			TM_HD44780_Puts(0, 0, FALSE[question_to_display]);
 	}
 
-	if(counter_of_already_FALSE==NUMBEROFQUESTIONS)
+	if(counter_of_already_FALSE>=NUMBEROFQUESTIONS)
 	{
 		question_to_display = Question_Control_TRUE();
 			TM_HD44780_Init(24,4);
@@ -179,12 +158,7 @@ void Get_Question()
 			TM_HD44780_Puts(0, 0, TRUE[question_to_display]);
 	}
 
-	if(counter_of_already_FALSE==NUMBEROFQUESTIONS&&counter_of_already_TRUE==NUMBEROFQUESTIONS)
-	{
-		TM_HD44780_Init(24,4);
-					TM_HD44780_Clear();
-					TM_HD44780_Puts(0, 0, "KONIEC PYTAN. WYGRALES/AS!!!");
-	}
+
 	else {
 
 		true_or_false=rand()%2;
@@ -205,7 +179,7 @@ void Get_Question()
 	TM_HD44780_Puts(0, 0, TRUE[question_to_display]);}
 	}
 }
-
+}
 
 
 void init_counter ()
@@ -320,12 +294,12 @@ srand(0);
 init_counter();
 //SDmodule_Configuration();
 
-
+generate_order();
 do{
 	if(!GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_1))
 	{
-		GPIO_ToggleBits(GPIOD, GPIO_Pin_12);
 			Get_Question();
+			eight_seconds();
 			Delayms(150);
 			bylo++;
 	}
