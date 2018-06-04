@@ -38,6 +38,17 @@ K	-> GND		<br />
 K7 -> PA1 <br />
 K3 -> PA2 <br />
 G -> GND <br />
+
+**Dislpay:** <br />
+1 -> PE1 <br />
+2 - <br />
+3 -> PE0 <br />
+4 -> PE2 <br />
+5 -> PE5 <br />
+6 -> PE6 <br />
+7 -> +3V <br />
+8 -> PE4 <br />
+
 ## How to compile
 
 ## Future improvements
