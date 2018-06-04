@@ -293,6 +293,8 @@ srand(0);
 
 init_counter();
 //SDmodule_Configuration();
+GPIO_ToggleBits(GPIOD, GPIO_Pin_12);
+//GPIO_ToggleBits(GPIOD, GPIO_Pin_14);
 
 generate_order();
 do{
