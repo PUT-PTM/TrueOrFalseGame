@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-
+int RANDOM_FACTOR=56;
 int WHAT_NOW=0;
 int question_to_display;
 int NUMBEROFQUESTIONS = 25;
@@ -210,7 +210,6 @@ int eight_seconds()
 	counter_work=1;
 	int fin=0;
 	TIM_SetCounter(TIM3, 0);
-ANSWER=-1;
 for(;;)
 {;
 	if(counter_work==1)
@@ -403,7 +402,7 @@ GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 GPIO_Init(GPIOE, &GPIO_InitStructure);
 
 
-srand(3);
+srand(RANDOM_FACTOR);
 init_counter();
 
 SDmodule_Configuration();
@@ -429,11 +428,10 @@ generate_order();
 game_on=1;
 do{
 	if(!GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_1))
-	{	ANSWER=-1;
+	{
 		GPIO_ResetBits(GPIOD, GPIO_Pin_12);
 		GPIO_ResetBits(GPIOD, GPIO_Pin_14);
 			Get_Question();
-
 			eight_seconds();
 			Delayms(150);
 			if(ANSWER==-1){GPIO_SetBits(GPIOD, GPIO_Pin_14); GAME_LOST();}
@@ -443,7 +441,7 @@ do{
 			if(WHAT_NOW==1&&ANSWER==0){GPIO_SetBits(GPIOD, GPIO_Pin_14); GAME_LOST();}
 			if(WHAT_NOW==0&&ANSWER==1){GPIO_SetBits(GPIOD, GPIO_Pin_14); GAME_LOST();}
 			}
-control=1;
+
 	}
 
 
