@@ -1,8 +1,6 @@
 /*
  * sdmodule.h
  *
- *  Created on: 19.05.2018
- *      Author: HP 8560w
  */
 
 #ifndef SDMODULE_H_
@@ -14,7 +12,7 @@
 #include "spi_sd.h"
 #include "ff.h"
 
-#define SDmodule_EndOfFileSymbol '$'
+
 
 void SDmodule_Configuration(void);
 uint8_t SDmodule_ReadFile(char* file_name, char * buffer, UINT * loaded_bytes);

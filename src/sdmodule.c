@@ -1,8 +1,5 @@
 /*
  * sdmodule.c
- *
- *  Created on: 19.05.2018
- *      Author: HP 8560w
  */
 
 

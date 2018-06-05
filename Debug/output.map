@@ -6304,7 +6304,7 @@ LOAD c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.15
                 0x0000074c       0x22 c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.15.0.201708311556/tools/compiler/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
 OUTPUT(TrueOrFalseGame.elf elf32-littlearm)
 
-.debug_info     0x00000000     0xbd0e
+.debug_info     0x00000000     0xbd0c
  .debug_info    0x00000000      0x551 StdPeriph_Driver/src/misc.o
  .debug_info    0x00000551      0x36a StdPeriph_Driver/src/stm32f4xx_exti.o
  .debug_info    0x000008bb      0x629 StdPeriph_Driver/src/stm32f4xx_gpio.o
@@ -6314,17 +6314,17 @@ OUTPUT(TrueOrFalseGame.elf elf32-littlearm)
  .debug_info    0x00003a59      0x1c4 src/delay.o
  .debug_info    0x00003c1d     0x1622 src/ff.o
  .debug_info    0x0000523f      0x28f src/fpu.o
- .debug_info    0x000054ce     0x14ae src/main.o
- .debug_info    0x0000697c      0xc80 src/sdmodule.o
- .debug_info    0x000075fc      0x987 src/spi_sd.o
- .debug_info    0x00007f83      0xf2a src/syscalls.o
- .debug_info    0x00008ead      0x5d4 src/system_stm32f4xx.o
- .debug_info    0x00009481     0x1251 src/tm_stm32f4_delay.o
- .debug_info    0x0000a6d2      0x84c src/tm_stm32f4_gpio.o
- .debug_info    0x0000af1e      0xd75 src/tm_stm32f4_hd44780.o
- .debug_info    0x0000bc93       0x7b startup/startup_stm32f4xx.o
+ .debug_info    0x000054ce     0x14ac src/main.o
+ .debug_info    0x0000697a      0xc80 src/sdmodule.o
+ .debug_info    0x000075fa      0x987 src/spi_sd.o
+ .debug_info    0x00007f81      0xf2a src/syscalls.o
+ .debug_info    0x00008eab      0x5d4 src/system_stm32f4xx.o
+ .debug_info    0x0000947f     0x1251 src/tm_stm32f4_delay.o
+ .debug_info    0x0000a6d0      0x84c src/tm_stm32f4_gpio.o
+ .debug_info    0x0000af1c      0xd75 src/tm_stm32f4_hd44780.o
+ .debug_info    0x0000bc91       0x7b startup/startup_stm32f4xx.o
 
-.debug_abbrev   0x00000000     0x2125
+.debug_abbrev   0x00000000     0x210d
  .debug_abbrev  0x00000000      0x175 StdPeriph_Driver/src/misc.o
  .debug_abbrev  0x00000175      0x1bf StdPeriph_Driver/src/stm32f4xx_exti.o
  .debug_abbrev  0x00000334      0x1bb StdPeriph_Driver/src/stm32f4xx_gpio.o
@@ -6334,15 +6334,15 @@ OUTPUT(TrueOrFalseGame.elf elf32-littlearm)
  .debug_abbrev  0x000009d0      0x11b src/delay.o
  .debug_abbrev  0x00000aeb      0x1e5 src/ff.o
  .debug_abbrev  0x00000cd0       0xcc src/fpu.o
- .debug_abbrev  0x00000d9c      0x35a src/main.o
- .debug_abbrev  0x000010f6      0x235 src/sdmodule.o
- .debug_abbrev  0x0000132b      0x277 src/spi_sd.o
- .debug_abbrev  0x000015a2      0x2aa src/syscalls.o
- .debug_abbrev  0x0000184c      0x15b src/system_stm32f4xx.o
- .debug_abbrev  0x000019a7      0x37b src/tm_stm32f4_delay.o
- .debug_abbrev  0x00001d22      0x17f src/tm_stm32f4_gpio.o
- .debug_abbrev  0x00001ea1      0x272 src/tm_stm32f4_hd44780.o
- .debug_abbrev  0x00002113       0x12 startup/startup_stm32f4xx.o
+ .debug_abbrev  0x00000d9c      0x342 src/main.o
+ .debug_abbrev  0x000010de      0x235 src/sdmodule.o
+ .debug_abbrev  0x00001313      0x277 src/spi_sd.o
+ .debug_abbrev  0x0000158a      0x2aa src/syscalls.o
+ .debug_abbrev  0x00001834      0x15b src/system_stm32f4xx.o
+ .debug_abbrev  0x0000198f      0x37b src/tm_stm32f4_delay.o
+ .debug_abbrev  0x00001d0a      0x17f src/tm_stm32f4_gpio.o
+ .debug_abbrev  0x00001e89      0x272 src/tm_stm32f4_hd44780.o
+ .debug_abbrev  0x000020fb       0x12 startup/startup_stm32f4xx.o
 
 .debug_aranges  0x00000000      0xbb0
  .debug_aranges
@@ -6402,7 +6402,7 @@ OUTPUT(TrueOrFalseGame.elf elf32-littlearm)
  .debug_ranges  0x000009d8       0xa0 src/tm_stm32f4_hd44780.o
  .debug_ranges  0x00000a78       0x20 startup/startup_stm32f4xx.o
 
-.debug_macro    0x00000000    0x123b7
+.debug_macro    0x00000000    0x123ab
  .debug_macro   0x00000000      0x1c5 StdPeriph_Driver/src/misc.o
  .debug_macro   0x000001c5      0x8d4 StdPeriph_Driver/src/misc.o
  .debug_macro   0x00000a99       0x63 StdPeriph_Driver/src/misc.o
@@ -6460,72 +6460,72 @@ OUTPUT(TrueOrFalseGame.elf elf32-littlearm)
  .debug_macro   0x0000f1a4       0xf9 src/ff.o
  .debug_macro   0x0000f29d       0x8e src/ff.o
  .debug_macro   0x0000f32b      0x1b5 src/fpu.o
- .debug_macro   0x0000f4e0      0x40a src/main.o
- .debug_macro   0x0000f8ea       0x58 src/main.o
- .debug_macro   0x0000f942       0x35 src/main.o
- .debug_macro   0x0000f977       0x9c src/main.o
- .debug_macro   0x0000fa13       0x16 src/main.o
- .debug_macro   0x0000fa29       0x97 src/main.o
- .debug_macro   0x0000fac0      0x330 src/main.o
- .debug_macro   0x0000fdf0       0xfd src/main.o
- .debug_macro   0x0000feed       0x10 src/main.o
- .debug_macro   0x0000fefd       0x58 src/main.o
- .debug_macro   0x0000ff55       0x1f src/main.o
- .debug_macro   0x0000ff74       0x43 src/main.o
- .debug_macro   0x0000ffb7       0x20 src/main.o
- .debug_macro   0x0000ffd7      0x187 src/main.o
- .debug_macro   0x0001015e       0x10 src/main.o
- .debug_macro   0x0001016e       0x1c src/main.o
- .debug_macro   0x0001018a       0x52 src/main.o
- .debug_macro   0x000101dc       0x40 src/main.o
- .debug_macro   0x0001021c       0x10 src/main.o
- .debug_macro   0x0001022c       0x40 src/main.o
- .debug_macro   0x0001026c       0xd7 src/main.o
- .debug_macro   0x00010343       0x16 src/main.o
- .debug_macro   0x00010359      0x18b src/main.o
- .debug_macro   0x000104e4       0x16 src/main.o
- .debug_macro   0x000104fa       0x35 src/main.o
- .debug_macro   0x0001052f       0x52 src/main.o
- .debug_macro   0x00010581       0x10 src/main.o
- .debug_macro   0x00010591       0x16 src/main.o
- .debug_macro   0x000105a7       0x16 src/main.o
- .debug_macro   0x000105bd       0x29 src/main.o
- .debug_macro   0x000105e6       0x35 src/main.o
- .debug_macro   0x0001061b       0xaf src/main.o
- .debug_macro   0x000106ca       0x16 src/main.o
- .debug_macro   0x000106e0       0x10 src/main.o
- .debug_macro   0x000106f0       0x41 src/main.o
- .debug_macro   0x00010731      0x2b7 src/sdmodule.o
- .debug_macro   0x000109e8       0x52 src/sdmodule.o
- .debug_macro   0x00010a3a       0x8d src/sdmodule.o
- .debug_macro   0x00010ac7      0x174 src/sdmodule.o
- .debug_macro   0x00010c3b       0x57 src/sdmodule.o
- .debug_macro   0x00010c92       0x10 src/sdmodule.o
- .debug_macro   0x00010ca2      0x23b src/spi_sd.o
- .debug_macro   0x00010edd       0x10 src/spi_sd.o
- .debug_macro   0x00010eed       0x82 src/spi_sd.o
- .debug_macro   0x00010f6f      0x236 src/syscalls.o
- .debug_macro   0x000111a5       0x10 src/syscalls.o
- .debug_macro   0x000111b5       0x10 src/syscalls.o
- .debug_macro   0x000111c5       0x35 src/syscalls.o
- .debug_macro   0x000111fa      0x122 src/syscalls.o
- .debug_macro   0x0001131c       0x10 src/syscalls.o
- .debug_macro   0x0001132c      0x241 src/syscalls.o
- .debug_macro   0x0001156d       0x1c src/syscalls.o
- .debug_macro   0x00011589       0x10 src/syscalls.o
- .debug_macro   0x00011599      0x159 src/syscalls.o
- .debug_macro   0x000116f2       0x16 src/syscalls.o
- .debug_macro   0x00011708       0x88 src/syscalls.o
- .debug_macro   0x00011790      0x1e6 src/system_stm32f4xx.o
- .debug_macro   0x00011976      0x2a4 src/tm_stm32f4_delay.o
- .debug_macro   0x00011c1a       0x16 src/tm_stm32f4_delay.o
- .debug_macro   0x00011c30      0x10e src/tm_stm32f4_delay.o
- .debug_macro   0x00011d3e       0x8d src/tm_stm32f4_delay.o
- .debug_macro   0x00011dcb      0x1d1 src/tm_stm32f4_gpio.o
- .debug_macro   0x00011f9c       0xa9 src/tm_stm32f4_gpio.o
- .debug_macro   0x00012045      0x372 src/tm_stm32f4_hd44780.o
+ .debug_macro   0x0000f4e0      0x404 src/main.o
+ .debug_macro   0x0000f8e4       0x58 src/main.o
+ .debug_macro   0x0000f93c       0x35 src/main.o
+ .debug_macro   0x0000f971       0x9c src/main.o
+ .debug_macro   0x0000fa0d       0x16 src/main.o
+ .debug_macro   0x0000fa23       0x97 src/main.o
+ .debug_macro   0x0000faba      0x330 src/main.o
+ .debug_macro   0x0000fdea       0xfd src/main.o
+ .debug_macro   0x0000fee7       0x10 src/main.o
+ .debug_macro   0x0000fef7       0x58 src/main.o
+ .debug_macro   0x0000ff4f       0x1f src/main.o
+ .debug_macro   0x0000ff6e       0x43 src/main.o
+ .debug_macro   0x0000ffb1       0x20 src/main.o
+ .debug_macro   0x0000ffd1      0x187 src/main.o
+ .debug_macro   0x00010158       0x10 src/main.o
+ .debug_macro   0x00010168       0x1c src/main.o
+ .debug_macro   0x00010184       0x52 src/main.o
+ .debug_macro   0x000101d6       0x40 src/main.o
+ .debug_macro   0x00010216       0x10 src/main.o
+ .debug_macro   0x00010226       0x40 src/main.o
+ .debug_macro   0x00010266       0xd7 src/main.o
+ .debug_macro   0x0001033d       0x16 src/main.o
+ .debug_macro   0x00010353      0x18b src/main.o
+ .debug_macro   0x000104de       0x16 src/main.o
+ .debug_macro   0x000104f4       0x35 src/main.o
+ .debug_macro   0x00010529       0x52 src/main.o
+ .debug_macro   0x0001057b       0x10 src/main.o
+ .debug_macro   0x0001058b       0x16 src/main.o
+ .debug_macro   0x000105a1       0x16 src/main.o
+ .debug_macro   0x000105b7       0x29 src/main.o
+ .debug_macro   0x000105e0       0x35 src/main.o
+ .debug_macro   0x00010615       0xaf src/main.o
+ .debug_macro   0x000106c4       0x16 src/main.o
+ .debug_macro   0x000106da       0x10 src/main.o
+ .debug_macro   0x000106ea       0x41 src/main.o
+ .debug_macro   0x0001072b      0x2b1 src/sdmodule.o
+ .debug_macro   0x000109dc       0x52 src/sdmodule.o
+ .debug_macro   0x00010a2e       0x8d src/sdmodule.o
+ .debug_macro   0x00010abb      0x174 src/sdmodule.o
+ .debug_macro   0x00010c2f       0x57 src/sdmodule.o
+ .debug_macro   0x00010c86       0x10 src/sdmodule.o
+ .debug_macro   0x00010c96      0x23b src/spi_sd.o
+ .debug_macro   0x00010ed1       0x10 src/spi_sd.o
+ .debug_macro   0x00010ee1       0x82 src/spi_sd.o
+ .debug_macro   0x00010f63      0x236 src/syscalls.o
+ .debug_macro   0x00011199       0x10 src/syscalls.o
+ .debug_macro   0x000111a9       0x10 src/syscalls.o
+ .debug_macro   0x000111b9       0x35 src/syscalls.o
+ .debug_macro   0x000111ee      0x122 src/syscalls.o
+ .debug_macro   0x00011310       0x10 src/syscalls.o
+ .debug_macro   0x00011320      0x241 src/syscalls.o
+ .debug_macro   0x00011561       0x1c src/syscalls.o
+ .debug_macro   0x0001157d       0x10 src/syscalls.o
+ .debug_macro   0x0001158d      0x159 src/syscalls.o
+ .debug_macro   0x000116e6       0x16 src/syscalls.o
+ .debug_macro   0x000116fc       0x88 src/syscalls.o
+ .debug_macro   0x00011784      0x1e6 src/system_stm32f4xx.o
+ .debug_macro   0x0001196a      0x2a4 src/tm_stm32f4_delay.o
+ .debug_macro   0x00011c0e       0x16 src/tm_stm32f4_delay.o
+ .debug_macro   0x00011c24      0x10e src/tm_stm32f4_delay.o
+ .debug_macro   0x00011d32       0x8d src/tm_stm32f4_delay.o
+ .debug_macro   0x00011dbf      0x1d1 src/tm_stm32f4_gpio.o
+ .debug_macro   0x00011f90       0xa9 src/tm_stm32f4_gpio.o
+ .debug_macro   0x00012039      0x372 src/tm_stm32f4_hd44780.o
 
-.debug_line     0x00000000     0x8e1c
+.debug_line     0x00000000     0x8e1a
  .debug_line    0x00000000      0x66b StdPeriph_Driver/src/misc.o
  .debug_line    0x0000066b      0x6c4 StdPeriph_Driver/src/stm32f4xx_exti.o
  .debug_line    0x00000d2f      0x783 StdPeriph_Driver/src/stm32f4xx_gpio.o
@@ -6535,17 +6535,17 @@ OUTPUT(TrueOrFalseGame.elf elf32-littlearm)
  .debug_line    0x000033dc      0x674 src/delay.o
  .debug_line    0x00003a50      0xbb2 src/ff.o
  .debug_line    0x00004602      0x5f9 src/fpu.o
- .debug_line    0x00004bfb      0xaaa src/main.o
- .debug_line    0x000056a5      0x751 src/sdmodule.o
- .debug_line    0x00005df6      0xa09 src/spi_sd.o
- .debug_line    0x000067ff      0x5d4 src/syscalls.o
- .debug_line    0x00006dd3      0x685 src/system_stm32f4xx.o
- .debug_line    0x00007458      0x859 src/tm_stm32f4_delay.o
- .debug_line    0x00007cb1      0x7e5 src/tm_stm32f4_gpio.o
- .debug_line    0x00008496      0x90b src/tm_stm32f4_hd44780.o
- .debug_line    0x00008da1       0x7b startup/startup_stm32f4xx.o
+ .debug_line    0x00004bfb      0xaa8 src/main.o
+ .debug_line    0x000056a3      0x751 src/sdmodule.o
+ .debug_line    0x00005df4      0xa09 src/spi_sd.o
+ .debug_line    0x000067fd      0x5d4 src/syscalls.o
+ .debug_line    0x00006dd1      0x685 src/system_stm32f4xx.o
+ .debug_line    0x00007456      0x859 src/tm_stm32f4_delay.o
+ .debug_line    0x00007caf      0x7e5 src/tm_stm32f4_gpio.o
+ .debug_line    0x00008494      0x90b src/tm_stm32f4_hd44780.o
+ .debug_line    0x00008d9f       0x7b startup/startup_stm32f4xx.o
 
-.debug_str      0x00000000    0x5fe40
+.debug_str      0x00000000    0x5fe23
  .debug_str     0x00000000    0x55f7a StdPeriph_Driver/src/misc.o
                               0x5611c (size before relaxing)
  .debug_str     0x00055f7a      0x1e5 StdPeriph_Driver/src/stm32f4xx_exti.o
@@ -6564,21 +6564,21 @@ OUTPUT(TrueOrFalseGame.elf elf32-littlearm)
                                0x3901 (size before relaxing)
  .debug_str     0x0005906c       0x18 src/fpu.o
                               0x55f09 (size before relaxing)
- .debug_str     0x00059084     0x4fe4 src/main.o
-                              0x5bbda (size before relaxing)
- .debug_str     0x0005e068       0xbd src/sdmodule.o
-                              0x5984b (size before relaxing)
- .debug_str     0x0005e125      0x239 src/spi_sd.o
+ .debug_str     0x00059084     0x4fc7 src/main.o
+                              0x5bbbd (size before relaxing)
+ .debug_str     0x0005e04b       0xbd src/sdmodule.o
+                              0x5982e (size before relaxing)
+ .debug_str     0x0005e108      0x239 src/spi_sd.o
                               0x56428 (size before relaxing)
- .debug_str     0x0005e35e      0xf99 src/syscalls.o
+ .debug_str     0x0005e341      0xf99 src/syscalls.o
                                0x7d74 (size before relaxing)
- .debug_str     0x0005f2f7       0xd7 src/system_stm32f4xx.o
+ .debug_str     0x0005f2da       0xd7 src/system_stm32f4xx.o
                               0x56102 (size before relaxing)
- .debug_str     0x0005f3ce      0x1fb src/tm_stm32f4_delay.o
+ .debug_str     0x0005f3b1      0x1fb src/tm_stm32f4_delay.o
                               0x598f9 (size before relaxing)
- .debug_str     0x0005f5c9      0x29f src/tm_stm32f4_gpio.o
+ .debug_str     0x0005f5ac      0x29f src/tm_stm32f4_gpio.o
                               0x5688e (size before relaxing)
- .debug_str     0x0005f868      0x5d8 src/tm_stm32f4_hd44780.o
+ .debug_str     0x0005f84b      0x5d8 src/tm_stm32f4_hd44780.o
                               0x59ca2 (size before relaxing)
 
 .comment        0x00000000       0x7f

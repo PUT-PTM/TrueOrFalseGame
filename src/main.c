@@ -103,24 +103,6 @@ void generate_order()
 			order_TRUE[i] = i;
 			order_FALSE[i] = i;
 		}
-
-/*	for (int i = 0; i < NUMBEROFQUESTIONS; i++)
-		{    // shuffle array
-
-		int temp_FALSE = order_FALSE[i];
-		int temp_TRUE = order_TRUE[i];
-
-		int randomIndex = rand() % NUMBEROFQUESTIONS;
-
-		order_TRUE[i] = order_TRUE[randomIndex];
-		order_TRUE[randomIndex] = temp_TRUE;
-
-		order_FALSE[i] = FALSE[randomIndex];
-		order_FALSE[randomIndex] = temp_FALSE;
-
-		}
-*/
-
 		}
 
 
@@ -197,14 +179,6 @@ void init_counter ()
 }
 
 
-
-/*void Get_from_SD(char nameoffile)
-{
-	char* filename = nameoffile;
-
-	SDmodule_ReadFile(filename, &dane, &loadedBytes);
-}
-*/
 int eight_seconds()
 {	unsigned int i=1;
 	counter_work=1;
@@ -415,8 +389,7 @@ char* filename="WELCOME.TXT";
 SDmodule_ReadFile(filename, &dane, &loadedBytes);
 
 
-//GPIO_ToggleBits(GPIOD, GPIO_Pin_12);
-//GPIO_ToggleBits(GPIOD, GPIO_Pin_14);
+
 
 do{
 TM_HD44780_Init(24,4);
