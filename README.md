@@ -2,7 +2,7 @@
 
 ## Overview
 
-Test Your knowledge in the TrueOrFalseGame. Are You smart enough to answer all the questions?
+Test Your knowledge in the TrueOrFalseGame. Chances are 50/50. Are You smart enough to answer all the questions?
 
 ## Tools
 
