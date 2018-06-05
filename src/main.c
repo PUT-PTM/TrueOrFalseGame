@@ -21,7 +21,7 @@
 #include <time.h>
 
 
-int bylo=0;
+int WHAT_NOW=0;
 int question_to_display;
 int NUMBEROFQUESTIONS = 25;
 int already_TRUE[25];
@@ -30,6 +30,11 @@ int order_TRUE[25];
 int order_FALSE[25];
 int true_or_false=0;
 int end=0;
+int after=0;
+int ANSWER = 0;
+int BREAK_AVAIABLE=0;
+unsigned int counter_work=1;
+int clicked=0;
 
 int counter_of_already_TRUE=0;
 int counter_of_already_FALSE=0;
@@ -119,13 +124,16 @@ void generate_order()
 
 
 int Question_Control_TRUE()
-{		counter_of_already_TRUE++;
+{		WHAT_NOW=1;
+		counter_of_already_TRUE++;
 		return order_TRUE[counter_of_already_TRUE-1];
 
 }
 
 int Question_Control_FALSE()
-{	counter_of_already_FALSE++;
+{
+	WHAT_NOW=0;
+	counter_of_already_FALSE++;
 	return order_FALSE[counter_of_already_FALSE-1];
 
 }
@@ -198,11 +206,13 @@ void init_counter ()
 */
 int eight_seconds()
 {	unsigned int i=1;
-	unsigned int dzialaj=1;
-	int skonczylem=0;
+	counter_work=1;
+	int fin=0;
 	TIM_SetCounter(TIM3, 0);
+
 for(;;)
-{ if(dzialaj==1)
+{;
+	if(counter_work==1)
 {	if(TIM_GetCounter(TIM3)==2000 )
 	{
 		TIM_SetCounter(TIM3, 0);
@@ -223,24 +233,123 @@ GPIO_ResetBits(GPIOE, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_3 |GPIO_Pin_4 |  GPIO_P
 if(i==8){ GPIO_SetBits(GPIOE, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 |GPIO_Pin_4 |  GPIO_Pin_5 | GPIO_Pin_6);
 GPIO_ResetBits(GPIOE, GPIO_Pin_1 | GPIO_Pin_2);}
 if(i==9){ GPIO_SetBits(GPIOE, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 |GPIO_Pin_4 |  GPIO_Pin_5 | GPIO_Pin_6);
-GPIO_ResetBits(GPIOE, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 |GPIO_Pin_4 |  GPIO_Pin_5); dzialaj=0;}
+GPIO_ResetBits(GPIOE, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 |GPIO_Pin_4 |  GPIO_Pin_5); counter_work=0;}
 i++;
 	}
 }
 else {break;}
 }
-skonczylem = 1;
-return skonczylem;
+fin = 1;
+return fin;
 }
 
 
+
+void EXTI1_IRQHandler(void)
+{
+             if(EXTI_GetITStatus(EXTI_Line1) != RESET)
+             {
+            	 ANSWER=1;
+            	 clicked=1;
+
+
+// wyzerowanie flagi wyzwolonego przerwania
+            	 EXTI_ClearITPendingBit(EXTI_Line1);
+              }
+}
+
+void EXTI2_IRQHandler(void)
+{
+             if(EXTI_GetITStatus(EXTI_Line2) != RESET)
+             {
+            	 ANSWER=0;
+            	 clicked=1;
+
+
+// wyzerowanie flagi wyzwolonego przerwania
+            	 EXTI_ClearITPendingBit(EXTI_Line2);
+              }
+}
+
+void GAME_LOST()
+{
+	TM_HD44780_Init(24,4);
+		TM_HD44780_Clear();
+		TM_HD44780_Puts(0, 0, "PRZEGRALES/AS! SPROBUJ  PONOWNIE.");
+
+}
+void GAME_CONTINUE()
+{
+	TM_HD44780_Init(24,4);
+		TM_HD44780_Clear();
+		TM_HD44780_Puts(0, 0, "POPRAWNA ODPOWIEDZ! NACISNIJ TRUE.");
+
+}
+
 int main(void)
 {
-srand(0);
+
 RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
 RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
+
+
+
+
+
+
+NVIC_InitTypeDef NVIC_InitStructure;
+// numer przerwania
+NVIC_InitStructure.NVIC_IRQChannel = EXTI1_IRQn;
+// priorytet główny
+NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x00;
+// subpriorytet
+NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x00;
+// uruchom dany kanał
+NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+// zapisz wypełnioną strukturę do rejestrów
+NVIC_Init(&NVIC_InitStructure);
+
+EXTI_InitTypeDef EXTI_InitStructure;
+// wybór numeru aktualnie konfigurowanej linii przerwań
+EXTI_InitStructure.EXTI_Line = EXTI_Line1;
+// wybór trybu - przerwanie bądź zdarzenie
+EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+// wybór zbocza, na które zareaguje przerwanie
+EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
+// uruchom daną linię przerwań
+EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+// zapisz strukturę konfiguracyjną przerwań zewnętrznych do rejestrów
+EXTI_Init(&EXTI_InitStructure);
+SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource1);
+
+NVIC_InitTypeDef NVIC_InitStructure2;
+// numer przerwania
+NVIC_InitStructure2.NVIC_IRQChannel = EXTI2_IRQn;
+// priorytet główny
+NVIC_InitStructure2.NVIC_IRQChannelPreemptionPriority = 0x00;
+// subpriorytet
+NVIC_InitStructure2.NVIC_IRQChannelSubPriority = 0x00;
+// uruchom dany kanał
+NVIC_InitStructure2.NVIC_IRQChannelCmd = ENABLE;
+// zapisz wypełnioną strukturę do rejestrów
+NVIC_Init(&NVIC_InitStructure2);
+
+EXTI_InitTypeDef EXTI_InitStructure2;
+// wybór numeru aktualnie konfigurowanej linii przerwań
+EXTI_InitStructure2.EXTI_Line = EXTI_Line2;
+// wybór trybu - przerwanie bądź zdarzenie
+EXTI_InitStructure2.EXTI_Mode = EXTI_Mode_Interrupt;
+// wybór zbocza, na które zareaguje przerwanie
+EXTI_InitStructure2.EXTI_Trigger = EXTI_Trigger_Rising;
+// uruchom daną linię przerwań
+EXTI_InitStructure2.EXTI_LineCmd = ENABLE;
+// zapisz strukturę konfiguracyjną przerwań zewnętrznych do rejestrów
+EXTI_Init(&EXTI_InitStructure2);
+SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource2);
+
+
 
 // tworzenie strutkury
 GPIO_InitTypeDef  GPIO_InitStructure;
@@ -290,86 +399,47 @@ GPIO_Init(GPIOE, &GPIO_InitStructure);
 
 
 srand(0);
-
 init_counter();
-//SDmodule_Configuration();
-GPIO_ToggleBits(GPIOD, GPIO_Pin_12);
+generate_order();
+SDmodule_Configuration();
+
+
+char dane[48];
+UINT loadedBytes;
+char* filename="WELCOME.TXT";
+
+SDmodule_ReadFile(filename, &dane, &loadedBytes);
+
+
+//GPIO_ToggleBits(GPIOD, GPIO_Pin_12);
 //GPIO_ToggleBits(GPIOD, GPIO_Pin_14);
 
-generate_order();
+do{
+	TM_HD44780_Init(24,4);
+TM_HD44780_Clear();
+TM_HD44780_Puts(0, 0, dane);
 do{
 	if(!GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_1))
 	{
+		GPIO_ResetBits(GPIOD, GPIO_Pin_12);
+		GPIO_ResetBits(GPIOD, GPIO_Pin_14);
 			Get_Question();
 			eight_seconds();
 			Delayms(150);
-			bylo++;
+			if(clicked==0){GPIO_SetBits(GPIOD, GPIO_Pin_14); GAME_LOST();}
+			else{
+			if(WHAT_NOW==1&&ANSWER==1){GPIO_SetBits(GPIOD, GPIO_Pin_12); GAME_CONTINUE();}
+			if(WHAT_NOW==0&&ANSWER==0){GPIO_SetBits(GPIOD, GPIO_Pin_12); GAME_CONTINUE();}
+			if(WHAT_NOW==1&&ANSWER==0){GPIO_SetBits(GPIOD, GPIO_Pin_14); GAME_LOST();}
+			if(WHAT_NOW==0&&ANSWER==1){GPIO_SetBits(GPIOD, GPIO_Pin_14); GAME_LOST();}
+			}
+			clicked=0;
 	}
 
 
 
 }while(1);
-
-/*	int true_or_false=rand()%2;
-	int random;
-	random=rand()%NUMBEROFQUESTIONS+1;
-	if(true_or_false==0)
-	{
-		char fn[14];
-		sprintf(fn, "TRUE\\%d.txt", random);
-		filename = fn;
-		SDmodule_ReadFile(filename, &dane, &loadedBytes);
-		TM_HD44780_Init(24,4);
-		TM_HD44780_Clear();
-		TM_HD44780_Puts(0, 0, dane);
-}
-	if(true_or_false==1)
-		{
-			char fn[14];
-			sprintf(fn, "FALSE\\%d.txt", random);
-			filename = fn;
-			SDmodule_ReadFile(filename, &dane, &loadedBytes);
-			TM_HD44780_Init(24,4);
-			TM_HD44780_Clear();
-			TM_HD44780_Puts(0, 0, dane);
-	}
-
-	/*
-int i=9;
-char fn[14];
-sprintf(fn, "TRUE\\%d.txt", i);
-char* filename = fn;
-UINT loadedBytes;
-char dane[48];
-SDmodule_ReadFile(filename, &dane, &loadedBytes);
-TM_HD44780_Init(24,4);
-TM_HD44780_Clear();
-TM_HD44780_Puts(0, 0, dane);
-*/
-
-
-
-
-
-do{
-		if(!GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_1))
-		{
-			int pomoc=eight_seconds();
-					if(pomoc==1)
-				{	GPIO_ToggleBits(GPIOD, GPIO_Pin_12);
-					//module_ReadFile(filename, &dane, &loadedBytes);
-					TM_HD44780_Clear();
-					TM_HD44780_Puts(0, 0, "witaj");
-				}
-		}
-		if(!GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_2))
-		{
-			TM_HD44780_Clear();
-			TM_HD44780_Puts(0, 0, "2");
-		}
-		Delayms(150);
-
-	}while(1);
+}while(1);
 
 
 }
