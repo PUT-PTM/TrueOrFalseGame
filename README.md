@@ -62,7 +62,7 @@ We recommend System Worbench for STM32.
 
 ## Attributions
 
-We used FATFS library.
+We used FatFs library.
 
 ## License
 
