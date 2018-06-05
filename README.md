@@ -2,9 +2,11 @@
 
 ## Overview
 
-Break your own record or compete against other players in TrueOrFalseGame!
+Test Your knowledge in the TrueOrFalseGame. Are You smart enough to answer all the questions?
 
 ## Tools
+
+To make it work, we used STM32F4 board as a heart and brain of the project. Additional peripherals are LCD, display, SD card reader, RGB and buttons module. Code was written and compiled by System Workbench for STM32.
 
 ## How to run
 
@@ -51,11 +53,20 @@ G -> GND <br />
 
 ## How to compile
 
+We recommend System Worbench for STM32.
+
 ## Future improvements
+
+- adding more questions <br />
+- claryfing the code <br />
 
 ## Attributions
 
+We used FATFS library.
+
 ## License
+
+*MIT*
 
 ## Credits
 
