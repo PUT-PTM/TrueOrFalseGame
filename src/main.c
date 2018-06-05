@@ -32,10 +32,11 @@ int true_or_false=0;
 int end=0;
 int after=0;
 int ANSWER = 0;
-int BREAK_AVAIABLE=0;
 unsigned int counter_work=1;
 int clicked=0;
-
+int game_on=1;
+int lost=0;
+int control =1;
 int counter_of_already_TRUE=0;
 int counter_of_already_FALSE=0;
 
@@ -209,7 +210,7 @@ int eight_seconds()
 	counter_work=1;
 	int fin=0;
 	TIM_SetCounter(TIM3, 0);
-
+ANSWER=-1;
 for(;;)
 {;
 	if(counter_work==1)
@@ -250,7 +251,6 @@ void EXTI1_IRQHandler(void)
              if(EXTI_GetITStatus(EXTI_Line1) != RESET)
              {
             	 ANSWER=1;
-            	 clicked=1;
 
 
 // wyzerowanie flagi wyzwolonego przerwania
@@ -263,7 +263,7 @@ void EXTI2_IRQHandler(void)
              if(EXTI_GetITStatus(EXTI_Line2) != RESET)
              {
             	 ANSWER=0;
-            	 clicked=1;
+
 
 
 // wyzerowanie flagi wyzwolonego przerwania
@@ -276,6 +276,11 @@ void GAME_LOST()
 	TM_HD44780_Init(24,4);
 		TM_HD44780_Clear();
 		TM_HD44780_Puts(0, 0, "PRZEGRALES/AS! SPROBUJ  PONOWNIE.");
+		do{
+			if(!GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_1))
+			{game_on=0;break;}
+		}
+			while(1);
 
 }
 void GAME_CONTINUE()
@@ -398,9 +403,9 @@ GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 GPIO_Init(GPIOE, &GPIO_InitStructure);
 
 
-srand(0);
+srand(3);
 init_counter();
-generate_order();
+
 SDmodule_Configuration();
 
 
@@ -415,30 +420,35 @@ SDmodule_ReadFile(filename, &dane, &loadedBytes);
 //GPIO_ToggleBits(GPIOD, GPIO_Pin_14);
 
 do{
-	TM_HD44780_Init(24,4);
+TM_HD44780_Init(24,4);
 TM_HD44780_Clear();
 TM_HD44780_Puts(0, 0, dane);
+counter_of_already_TRUE=0;
+counter_of_already_FALSE=0;
+generate_order();
+game_on=1;
 do{
 	if(!GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_1))
-	{
+	{	ANSWER=-1;
 		GPIO_ResetBits(GPIOD, GPIO_Pin_12);
 		GPIO_ResetBits(GPIOD, GPIO_Pin_14);
 			Get_Question();
+
 			eight_seconds();
 			Delayms(150);
-			if(clicked==0){GPIO_SetBits(GPIOD, GPIO_Pin_14); GAME_LOST();}
+			if(ANSWER==-1){GPIO_SetBits(GPIOD, GPIO_Pin_14); GAME_LOST();}
 			else{
 			if(WHAT_NOW==1&&ANSWER==1){GPIO_SetBits(GPIOD, GPIO_Pin_12); GAME_CONTINUE();}
 			if(WHAT_NOW==0&&ANSWER==0){GPIO_SetBits(GPIOD, GPIO_Pin_12); GAME_CONTINUE();}
 			if(WHAT_NOW==1&&ANSWER==0){GPIO_SetBits(GPIOD, GPIO_Pin_14); GAME_LOST();}
 			if(WHAT_NOW==0&&ANSWER==1){GPIO_SetBits(GPIOD, GPIO_Pin_14); GAME_LOST();}
 			}
-			clicked=0;
+control=1;
 	}
 
 
 
-}while(1);
+}while(game_on!=0);
 }while(1);
 
 
